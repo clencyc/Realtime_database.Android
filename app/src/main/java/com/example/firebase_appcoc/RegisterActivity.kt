@@ -52,9 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                         var gotologin = Intent(this, LoginActivity::class.java)
                         startActivity(gotologin)
 
-                    } else{
-                        Toast.makeText(this, "Failed to create account", Toast.LENGTH_SHORT).show()
-                    }
+                    } 
                 }
             }
 

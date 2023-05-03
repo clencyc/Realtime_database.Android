@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var BTN_cardata:Button
     lateinit var BTNView_data:Button
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         BTN_cardata = findViewById(R.id.btncardata)
         BTNView_data = findViewById(R.id.btnview_cars)
 
-        var database = FirebaseDatabase.getInstance()
-        var databaseRef = database.getReference("cars")
+        val database = FirebaseDatabase.getInstance()
+        val databaseRef = database.getReference("cars")
 
 
         BTNView_data.setOnClickListener {
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
 
         BTN_cardata.setOnClickListener {
 
-            var carmake = EDTCar_make.text.toString().trim()
-            var carmodel = EDTCAR_model.text.toString().trim()
-            var carprice = EDTCar_price.text.toString().trim()
+            val carmake = EDTCar_make.text.toString().trim()
+            val carmodel = EDTCAR_model.text.toString().trim()
+            val carprice = EDTCar_price.text.toString().trim()
 
             //validation
             if (carmake.isEmpty() || carmodel.isEmpty() || carprice.isEmpty()){
@@ -55,10 +55,10 @@ class MainActivity : AppCompatActivity() {
             } else {
 
                 //try to upload data to firebase
-                var usercar = Car(carmake,carmodel,carprice)
+                val usercar = Car(carmake,carmodel,carprice)
                 //create a reference to firebaseDatabase
 
-                var ref = FirebaseDatabase.getInstance().getReference().child("cars")
+                val ref = FirebaseDatabase.getInstance().getReference().child("cars")
 
 
                 ref.setValue(usercar).addOnCompleteListener{
