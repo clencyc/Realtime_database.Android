@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Firebase_appCoc"
         tools:targetApi="31">
+        <activity
+            android:name=".UpdateCar_Record"
+            android:exported="false" />
+        <activity
+            android:name=".ViewCarsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main2Activity"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

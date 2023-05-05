@@ -1,6 +1,7 @@
 package com.example.firebase_appcoc
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         BTNView_data.setOnClickListener {
 
+            var viewcars = Intent(this, ViewCarsActivity::class.java)
+
 
         }
 
@@ -48,6 +51,10 @@ class MainActivity : AppCompatActivity() {
             val carmodel = EDTCAR_model.text.toString().trim()
             val carprice = EDTCar_price.text.toString().trim()
 
+            var id = System.currentTimeMillis().toString()
+
+            var ref = database.getReference("cars/"+id)
+
             //validation
             if (carmake.isEmpty() || carmodel.isEmpty() || carprice.isEmpty()){
                 Toast.makeText(this, "Cannot submit an empty field", Toast.LENGTH_SHORT).show()
@@ -55,7 +62,7 @@ class MainActivity : AppCompatActivity() {
             } else {
 
                 //try to upload data to firebase
-                val usercar = Car(carmake,carmodel,carprice)
+                val usercar = Cars(carmake,carmodel,carprice,id)
                 //create a reference to firebaseDatabase
 
                 val ref = FirebaseDatabase.getInstance().getReference().child("cars")
